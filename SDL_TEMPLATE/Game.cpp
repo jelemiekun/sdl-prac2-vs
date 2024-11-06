@@ -1,5 +1,4 @@
 #include "Game.h"
-#include <iostream>
 
 Game::Game() : gWindow(nullptr), gRenderer(nullptr), isRunning(false) {
 
