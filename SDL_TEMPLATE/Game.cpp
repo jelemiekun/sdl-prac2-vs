@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "FPS.h"
 
 Game::Game() : gWindow(nullptr), gRenderer(nullptr), isRunning(false) {
 
