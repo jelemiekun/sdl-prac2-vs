@@ -13,3 +13,11 @@ constexpr static SDL_Color BOT_COLOR = { 0, 0, 0, 255 };
 constexpr static uint8_t BOT_WIDTH = 10;
 constexpr static uint8_t BOT_HEIGHT = 10;
 constexpr static uint8_t BOT_VELOCITY = 2;
+constexpr static uint8_t BOT_COUNT = 20;
+
+constexpr static SDL_Color PLAYER_COLOR = { 255, 0, 0, 255 };
+constexpr static uint8_t PLAYER_WIDTH = 20;
+constexpr static uint8_t PLAYER_HEIGHT = 20;
+constexpr static uint8_t PLAYER_VELOCITY = 4;
+
+constexpr static bool showLine = true;

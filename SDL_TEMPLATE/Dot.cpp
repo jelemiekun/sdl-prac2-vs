@@ -21,3 +21,11 @@ bool Dot::isBeyondScreen() {
 
     return false;
 }
+
+SDL_Point* Dot::getCenter() const {
+    return mCenter.get();
+}
+
+SDL_Rect* Dot::getCollider() const {
+    return mCollider.get();
+}

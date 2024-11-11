@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Bot.h"
+#include "Player.h"
 #include <SDL.h>
 
 class Game {
@@ -23,6 +24,7 @@ private:
 	SDL_Renderer* gRenderer;
 	SDL_Event gEvent;
 
-	Bot* bots[30];
+	Bot* bots[BOT_COUNT];
+	Player* player;
 };
 

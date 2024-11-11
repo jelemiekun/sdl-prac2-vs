@@ -2,7 +2,7 @@
 #include "FPS.h"
 #include <cmath>
 
-Game::Game() : gWindow(nullptr), gRenderer(nullptr), isRunning(false) {
+Game::Game() : gWindow(nullptr), gRenderer(nullptr), isRunning(false), player(nullptr) {
 
 }
 
@@ -45,6 +45,9 @@ void Game::initBots() {
 		bots[i] = new Bot;
 		bots[i]->init();
 	}
+
+	player = new Player;
+	player->init();
 }
 
 void Game::input() {
@@ -69,6 +72,10 @@ static bool checkCollision(SDL_Rect& a, SDL_Rect& b) {
 void Game::render() {
 	SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
 	SDL_RenderClear(gRenderer);
+
+	player->calculateDistances(gRenderer, bots);
+	player->move(gRenderer);
+	player->checkCollission(bots);
 
 	for (int i = 0; i < sizeof(bots) / sizeof(bots[0]); i++) {
 		if (bots[i] != nullptr) {
