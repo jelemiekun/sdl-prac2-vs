@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "AppInfo.h"
 #include "FPS.h"
 
 Game* game = nullptr;
@@ -10,7 +11,8 @@ int main(int argc, char* argv[]) {
     int countFrame = 0;
     Uint32 startTime = SDL_GetTicks();
 
-    game->init("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, 0);
+    game->init(S_TITLE, S_XPOS, S_YPOS, S_WIDTH, S_HEIGHT, S_FLAGS);
+    game->initBots();
 
     while (game->running()) {
         Uint32 frameStart = SDL_GetTicks();

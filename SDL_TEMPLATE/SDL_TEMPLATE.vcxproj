@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bot.cpp" />
+    <ClCompile Include="Dot.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
@@ -27,6 +29,9 @@
     <None Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppInfo.h" />
+    <ClInclude Include="Bot.h" />
+    <ClInclude Include="Dot.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
   </ItemGroup>
