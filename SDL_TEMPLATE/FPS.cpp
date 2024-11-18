@@ -17,7 +17,7 @@ void FPS::calculateAverageFPS(int& countFrame, Uint32& startTime) {
 }
 
 void FPS::capFPS(const Uint32& frameStart) {
-    constexpr Uint8 FPS = 60;
+    constexpr Uint8 FPS = 150;
     constexpr float FRAME_DURATION = 1000.0F / FPS;
 
     Uint32 frameDuration = SDL_GetTicks() - frameStart;
