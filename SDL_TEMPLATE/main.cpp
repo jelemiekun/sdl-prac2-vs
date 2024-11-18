@@ -12,7 +12,6 @@ int main(int argc, char* argv[]) {
     Uint32 startTime = SDL_GetTicks();
 
     game->init(S_TITLE, S_XPOS, S_YPOS, S_WIDTH, S_HEIGHT, S_FLAGS);
-    game->initBots();
 
     while (game->running()) {
         Uint32 frameStart = SDL_GetTicks();

@@ -2,7 +2,7 @@
 #include "FPS.h"
 #include <cmath>
 
-Game::Game() : gWindow(nullptr), gRenderer(nullptr), isRunning(false), player(nullptr) {
+Game::Game() : gWindow(nullptr), gRenderer(nullptr), isRunning(false) {
 
 }
 
@@ -40,16 +40,6 @@ void Game::init(const char* title, const int& rXPos, const int& rYPos, const int
 	isRunning = true;
 }
 
-void Game::initBots() {
-	for (int i = 0; i < sizeof(bots) / sizeof(bots[0]); i++) {
-		bots[i] = new Bot;
-		bots[i]->init();
-	}
-
-	player = new Player;
-	player->init();
-}
-
 void Game::input() {
 	while (SDL_PollEvent(&gEvent)) {
 		if (gEvent.type == SDL_QUIT) {
@@ -72,24 +62,6 @@ static bool checkCollision(SDL_Rect& a, SDL_Rect& b) {
 void Game::render() {
 	SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
 	SDL_RenderClear(gRenderer);
-
-	player->calculateDistances(gRenderer, bots);
-	player->move(gRenderer);
-	player->checkCollission(bots);
-
-	for (int i = 0; i < sizeof(bots) / sizeof(bots[0]); i++) {
-		if (bots[i] != nullptr) {
-			bots[i]->move(gRenderer);
-			if (bots[i]->isBeyondScreen()) {
-				delete bots[i];
-				bots[i] = nullptr;
-			}
-		} else {
-			bots[i] = new Bot;
-			bots[i]->init();
-		}
-	}
-
 	SDL_RenderPresent(gRenderer);
 }
 
