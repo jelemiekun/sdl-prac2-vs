@@ -1,10 +1,16 @@
 #include "Game.h"
-#include "FPS.h"
-#include <cmath>
-#include <string>
+#include "GameObject.h"
+#include "Map.h"
 
-Game::Game() : isRunning(false), gWindow(nullptr), gRenderer(nullptr), textureBackground(nullptr),
-		gFont(nullptr) {
+GameObject* player;
+Map* map;
+
+
+
+
+SDL_Renderer* Game::gRenderer = nullptr;
+
+Game::Game() : isRunning(false), gWindow(nullptr), gFont(nullptr) {
 
 }
 
@@ -39,6 +45,13 @@ void Game::init(const char* title, const int& rXPos, const int& rYPos, const int
 		return;
 	}
 
+	int imgFlags = IMG_INIT_PNG;
+	if (!(IMG_Init(imgFlags) & imgFlags)) {
+		std::cout << "Warning: SDL_Image could not initialize: " << IMG_GetError() << '\n';
+	} else {
+		std::cout << "SDL_image initialized." << '\n';
+	}
+
 	if (TTF_Init() == -1) {
 		std::cout << "SDL_TTF could not initialize: " << TTF_GetError() << '\n';
 	} else {
@@ -53,10 +66,10 @@ void Game::init(const char* title, const int& rXPos, const int& rYPos, const int
 		}
 	}
 
-	int widthHeightTexture = 700;
-	textureBackground = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, 700, 700);
+	player = new GameObject("assets/yellow.png");
 
-
+	map = new Map;
+	map->initMap(Levels::level1);
 
 	isRunning = true;
 }
@@ -77,14 +90,15 @@ void Game::input() {
 }
 
 void Game::update() {
-
+	player->update();
 }
 
 void Game::render() {
 	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
 	SDL_RenderClear(gRenderer);
 
-
+	player->render();
+	map->renderMap();
 
 	SDL_RenderPresent(gRenderer);
 }

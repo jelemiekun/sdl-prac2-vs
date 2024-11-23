@@ -1,9 +1,8 @@
 #pragma once
 #include <iostream>
 #include <SDL.h>
+#include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "Percolation.h"
-#include "PercolationStats.h"
 
 class Game {
 
@@ -19,18 +18,13 @@ public:
 
 	bool running();
 
-private:
-	constexpr static int numberOfRowColumn = 50;
+	static SDL_Renderer* gRenderer;
 
+private:
 	bool isRunning;
 	SDL_Window* gWindow;
-	SDL_Renderer* gRenderer;
 	SDL_Event gEvent;
 
-	SDL_Texture* texturePercolation;
-	Percolation* percolation;
-	PercolationStats* percStats;
-	
 	TTF_Font* gFont;
 };
 
