@@ -50,13 +50,6 @@ void Game::init(const char* title, const int& rXPos, const int& rYPos, const int
 		return;
 	}
 
-	int imgFlags = IMG_INIT_PNG;
-	if (!(IMG_Init(imgFlags) & imgFlags)) {
-		std::cout << "Warning: SDL_Image could not initialize: " << IMG_GetError() << '\n';
-	} else {
-		std::cout << "SDL_image initialized." << '\n';
-	}
-
 	if (TTF_Init() == -1) {
 		std::cout << "SDL_TTF could not initialize: " << TTF_GetError() << '\n';
 	} else {
