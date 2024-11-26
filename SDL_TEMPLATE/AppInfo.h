@@ -1,7 +1,7 @@
 #pragma once
 #include "SDL.h"
 
-constexpr const char* S_TITLE = "Title";
+constexpr const char* S_TITLE = "Tic Tac Toe";
 
 constexpr auto S_XPOS = SDL_WINDOWPOS_CENTERED;
 constexpr auto S_YPOS = SDL_WINDOWPOS_CENTERED;
