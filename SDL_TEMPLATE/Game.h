@@ -3,8 +3,6 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
-#include <memory>
-#include <unordered_map>
 
 
 class Game {
@@ -30,7 +28,5 @@ private:
 	SDL_Event gEvent;
 
 	TTF_Font* gFont;
-
-	SDL_Texture* gFileTexture;
 };
 
