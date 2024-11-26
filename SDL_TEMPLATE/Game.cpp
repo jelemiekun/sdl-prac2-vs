@@ -2,6 +2,63 @@
 #include "AppInfo.h"
 #include <string>
 #include <random>
+#include <unordered_map>
+
+class TileType { // Intrinsic Data
+public:
+	SDL_Texture* texture;
+
+	TileType(SDL_Renderer*& gRenderer, const std::string& path) {
+		texture = IMG_LoadTexture(gRenderer, path.c_str());
+	}
+
+	~TileType() {
+		SDL_DestroyTexture(texture);
+	}
+};
+
+
+class Tile { // Extrinsic Data
+private:
+	int posX;
+	int posY;
+	TileType* tileType; // Shared reference to common data
+
+public:
+	Tile(int x, int y, TileType* type) : posX(x), posY(y), tileType(type) {}
+
+	void render(SDL_Renderer*& renderer) {
+		SDL_Rect dest = { posX, posY, 50, 50 };
+		SDL_RenderCopy(renderer, tileType->texture, nullptr, &dest);
+	}
+};
+
+class TileFactory {
+private:
+	std::unordered_map<std::string, TileType*> tileTypes; // Cache of shared tile types
+
+public:
+	TileFactory() {}
+
+	TileType* getTileType(SDL_Renderer*& gRenderer, const std::string& texturePath) {
+		// If file type already exists, return it
+		if (tileTypes.find(texturePath) != tileTypes.end()) {
+			return tileTypes[texturePath];
+		}
+
+		// Otherwise, create a new TileType and store it;
+		TileType* newTileType = new TileType(gRenderer, texturePath);
+		tileTypes[texturePath] = newTileType;
+		return newTileType;
+	}
+
+	~TileFactory() {
+		for (auto& entry : tileTypes) {
+			delete entry.second;
+		}
+	}
+};
+
 
 
 SDL_Renderer* Game::gRenderer = nullptr;

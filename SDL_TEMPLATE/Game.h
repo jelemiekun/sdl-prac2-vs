@@ -30,5 +30,7 @@ private:
 	SDL_Event gEvent;
 
 	TTF_Font* gFont;
+
+	SDL_Texture* gFileTexture;
 };
 
