@@ -13,9 +13,6 @@ std::shared_ptr<ParticleTexture> ParticleManager::getRandomTexture() {
 	std::uniform_int_distribution<std::mt19937::result_type> dist6(0, types.size() - 1);
 
 	int randomIndex = dist6(rng);
-
-	std::cout << randomIndex << '\n';
-
 	ParticleTexture::TYPES randomType = types[randomIndex];
 	return particleTextures[randomType];
 }
