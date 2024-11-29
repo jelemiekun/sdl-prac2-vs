@@ -1,5 +1,19 @@
 #include "Game.h"
 #include "AppInfo.h"
+#include "MouseSubject.h"
+#include "ParticleSubject.h"
+#include "ParticleManager.h"
+
+
+std::shared_ptr<MouseSubject> mouseSubject = std::make_shared<MouseSubject>();
+std::shared_ptr<ParticleManager> particleManager = std::make_shared<ParticleManager>();
+std::shared_ptr<ParticleSubject> particleSubject = std::make_shared<ParticleSubject>();
+static Uint32 startTick;
+
+
+
+
+
 
 SDL_Renderer* Game::gRenderer = nullptr;
 
@@ -54,6 +68,15 @@ void Game::init(const char* title, const int& rXPos, const int& rYPos, const int
 		SDL_FreeSurface(iconSurface);*/
 	}
 
+	{
+		particleManager->initParticleTextures(gRenderer);
+		startTick = SDL_GetTicks();
+
+		particleSubject->addObserver(particleManager);
+		mouseSubject->addObserver(particleManager);
+
+	}
+
 
 	isRunning = true;
 }
@@ -63,20 +86,24 @@ void Game::input() {
 	while (SDL_PollEvent(&gEvent)) {
 		if (gEvent.type == SDL_QUIT) {
 			isRunning = false;
-		} else if (gEvent.type == SDL_KEYDOWN) {
-			
+		} else if (gEvent.type == SDL_MOUSEMOTION) {
+			mouseSubject->notifyObservers();
 		}
 	}
 }
 
 void Game::update() {
 
+
+	particleManager->createParticle();
 }
 
 
 void Game::render() {
 	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(gRenderer);
+
+	particleManager->renderParticles(gRenderer);
 
 	SDL_RenderPresent(gRenderer);
 }
