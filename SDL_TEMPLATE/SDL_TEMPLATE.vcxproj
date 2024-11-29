@@ -21,12 +21,7 @@
   <ItemGroup>
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Invoker.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TrafficLight.cpp" />
-    <ClCompile Include="TrafficLightState.cpp" />
-    <ClCompile Include="TrafficLightStateTexture.cpp" />
-    <ClCompile Include="TrafficLightTextureFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
@@ -35,11 +30,6 @@
     <ClInclude Include="AppInfo.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Invoker.h" />
-    <ClInclude Include="TrafficLight.h" />
-    <ClInclude Include="TrafficLightState.h" />
-    <ClInclude Include="TrafficLightStateTexture.h" />
-    <ClInclude Include="TrafficLightTextureFactory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
