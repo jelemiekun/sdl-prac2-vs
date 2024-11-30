@@ -22,12 +22,6 @@
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MouseSubject.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleManager.cpp" />
-    <ClCompile Include="ParticleState.cpp" />
-    <ClCompile Include="ParticleSubject.cpp" />
-    <ClCompile Include="ParticleTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
@@ -36,14 +30,6 @@
     <ClInclude Include="AppInfo.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="MouseObserver.h" />
-    <ClInclude Include="MouseSubject.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleManager.h" />
-    <ClInclude Include="ParticleObserver.h" />
-    <ClInclude Include="ParticleState.h" />
-    <ClInclude Include="ParticleSubject.h" />
-    <ClInclude Include="ParticleTexture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
